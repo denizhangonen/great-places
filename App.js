@@ -1,10 +1,20 @@
-import React from "react";
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import { Provider } from "react-redux";
-import ReduxThunk from "redux-thunk";
+import React from 'react';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import ReduxThunk from 'redux-thunk';
 
-import PlacesNavigator from "./navigation/PlacesNavigator";
-import PlacesReducer from "./store/places-reducer";
+import PlacesNavigator from './navigation/PlacesNavigator';
+import PlacesReducer from './store/places-reducer';
+import { init } from './helpers/db';
+
+init()
+  .then(() => {
+    console.log('Initialized db.');
+  })
+  .catch(err => {
+    console.log('Initializing db failed');
+    console.log(err);
+  });
 
 const rootReducer = combineReducers({
   places: PlacesReducer
