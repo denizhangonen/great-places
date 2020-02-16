@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, Platform, FlatList } from 'react-native';
-import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { useSelector, useDispatch } from 'react-redux';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 import HeaderButton from '../components/HeaderButton';
 import PlaceItem from '../components/PlaceItem';
@@ -23,7 +23,8 @@ const PlacesListScreen = props => {
         <PlaceItem
           image={itemData.item.imageUri}
           title={itemData.item.title}
-          address={'itemData.item.address'}
+          address={itemData.item.address}
+          
           onSelect={() => {
             props.navigation.navigate('PlaceDetail', {
               placeTitle: itemData.item.title,
